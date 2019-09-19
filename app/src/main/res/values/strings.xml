@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Marketim</string>
+    <string name="username">Kullanıcı Adı</string>
+    <string name="password">Şifre</string>
+    <string name="remember_me">Beni Hatırla</string>
+    <string name="login">Giriş Yap</string>
+    <string name="logout">Çıkış Yap</string>
+    <string name="login_error">Kullanıcı adı veya şifre hatalı</string>
+
+    <!-- Error Messages -->
+    <string name="e_username_null_blank">Kullanıcı adı boş geçilemez </string>
+    <string name="e_password_null_blank">Şifre boş geçilemez </string>
+</resources>
