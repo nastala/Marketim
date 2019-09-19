@@ -10,4 +10,9 @@
     <!-- Error Messages -->
     <string name="e_username_null_blank">Kullanıcı adı boş geçilemez </string>
     <string name="e_password_null_blank">Şifre boş geçilemez </string>
+    
+    <!-- Order States -->
+    <string name="os_getting_ready">Hazırlanıyor</string>
+    <string name="os_waiting_verification">Onay Bekliyor</string>
+    <string name="os_on_the_way">Yolda</string>
 </resources>
