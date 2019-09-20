@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseExpandableListAdapter
 import androidx.core.content.ContextCompat
+import com.example.marketim.Classes.Helper
 import com.example.marketim.Classes.Product
 import com.example.marketim.R
 import kotlinx.android.synthetic.main.activity_main.view.*
@@ -35,7 +36,7 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
             convertView = inflater.inflate(R.layout.elv_orders_group, null)
         }
 
-        when (product.state) {
+        when (product.productState) {
             _context.getString(R.string.os_getting_ready) -> {
                 convertView!!.ivItemState.setImageResource(R.color.colorOrange)
                 convertView.tvItemState.setTextColor(ContextCompat.getColor(_context, R.color.colorOrange))
@@ -50,12 +51,12 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
             }
         }
 
-        convertView.tvItemDay.text = product.day
-        convertView.tvItemMonth.text = product.month
+        convertView.tvItemDay.text = product.date
+        convertView.tvItemMonth.text = Helper.getMonthString(_context, product.month)
         convertView.tvItemTitle.text = product.marketName
         convertView.tvItemName.text = product.orderName
-        convertView.tvItemState.text = product.state
-        convertView.tvItemPrice.text = product.price.toString()
+        convertView.tvItemState.text = product.productState
+        convertView.tvItemPrice.text = product.productPrice.toString()
 
         return convertView
     }
@@ -86,7 +87,7 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
 
     override fun getChildView(p0: Int, p1: Int, p2: Boolean, p3: View?, p4: ViewGroup?): View {
         var convertView = p3
-        val details = _productsFiltered[p0].details
+        val details = _productsFiltered[p0].productDetail
 
         if (convertView == null) {
             val inflater = this._context

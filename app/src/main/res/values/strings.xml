@@ -15,4 +15,32 @@
     <string name="os_getting_ready">Hazırlanıyor</string>
     <string name="os_waiting_verification">Onay Bekliyor</string>
     <string name="os_on_the_way">Yolda</string>
+
+    <!-- Month Numbers -->
+    <string name="mn_january">01</string>
+    <string name="mn_february">02</string>
+    <string name="mn_march">03</string>
+    <string name="mn_april">04</string>
+    <string name="mn_may">05</string>
+    <string name="mn_june">06</string>
+    <string name="mn_july">07</string>
+    <string name="mn_august">08</string>
+    <string name="mn_september">09</string>
+    <string name="mn_october">10</string>
+    <string name="mn_november">11</string>
+    <string name="mn_december">12</string>
+
+    <!-- Month Strings -->
+    <string name="ms_january">Ocak</string>
+    <string name="ms_february">Şubat</string>
+    <string name="ms_march">Mart</string>
+    <string name="ms_april">Nisan</string>
+    <string name="ms_may">Mayıs</string>
+    <string name="ms_june">Haziran</string>
+    <string name="ms_july">Temmuz</string>
+    <string name="ms_august">Ağustos</string>
+    <string name="ms_september">Eylül</string>
+    <string name="ms_october">Ekim</string>
+    <string name="ms_november">Kasım</string>
+    <string name="ms_december">Aralık</string>
 </resources>
