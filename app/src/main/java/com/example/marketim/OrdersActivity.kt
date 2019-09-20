@@ -1,14 +1,12 @@
 package com.example.marketim
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.example.marketim.Adapters.ELVOrdersAdapter
-import com.example.marketim.Classes.OrdersService
-import com.example.marketim.Classes.Product
-import com.example.marketim.Classes.ProductDetail
-import com.example.marketim.Classes.RetrofitClient
+import com.example.marketim.Classes.*
 import kotlinx.android.synthetic.main.activity_orders.*
 import retrofit2.Call
 import retrofit2.Response
@@ -21,12 +19,25 @@ class OrdersActivity : AppCompatActivity() {
 
         getOrders()
 
-        /*val product = Product("8", "Ekim", "Market Bro", "Deterjan", 12.0, getString(R.string.os_on_the_way),
-            ProductDetail("Deterjan Detay", 12.0))
+        btnLogout.setOnClickListener {
+            logout()
+        }
 
-        val products = arrayListOf(product, product, product)
-        val listAdapter = ELVOrdersAdapter(this, products)
-        elvOrders.setAdapter(listAdapter)*/
+        btnOrders.setOnClickListener {
+            getOrders()
+        }
+    }
+
+    private fun logout() {
+        val prefs = this.getSharedPreferences(Helper.PREFS_FILENAME, 0)
+        prefs!!.edit().putBoolean(Helper.PREFS_REMEMBER_ME, false).apply()
+        goLoginActivity()
+    }
+
+    private fun goLoginActivity() {
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        finish()
+        startActivity(intent)
     }
 
     private fun getOrders() {
@@ -35,7 +46,7 @@ class OrdersActivity : AppCompatActivity() {
 
         RetrofitClient.getClient().create(OrdersService::class.java).getOrders().enqueue(object: retrofit2.Callback<List<Product>> {
             override fun onFailure(call: Call<List<Product>>?, t: Throwable?) {
-                Log.d("OrdersActivity", "getOrders failure error = ${t!!.message}")
+                Toast.makeText(context, t!!.message, Toast.LENGTH_SHORT).show()
                 activateView()
             }
 
@@ -44,12 +55,8 @@ class OrdersActivity : AppCompatActivity() {
                 response: Response<List<Product>>?
             ) {
                 val orders = ArrayList(response!!.body())
-                Log.d("OrdersActivity", "getOrders success")
-                Log.d("OrdersActivity", orders[0].toString())
-
                 val listAdapter = ELVOrdersAdapter(context, orders)
                 elvOrders.setAdapter(listAdapter)
-
                 activateView()
             }
         })

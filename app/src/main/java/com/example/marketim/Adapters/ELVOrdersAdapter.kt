@@ -9,26 +9,23 @@ import androidx.core.content.ContextCompat
 import com.example.marketim.Classes.Helper
 import com.example.marketim.Classes.Product
 import com.example.marketim.R
-import kotlinx.android.synthetic.main.activity_main.view.*
 import kotlinx.android.synthetic.main.elv_orders_group.view.*
 
-class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>) :
+class ELVOrdersAdapter(private val _context: Context, _products: ArrayList<Product>) :
     BaseExpandableListAdapter() {
-    var _productsFiltered: ArrayList<Product>
-    var _productsOriginal = ArrayList<Product>()
+    var productsOriginal = ArrayList<Product>()
 
     init {
-        _productsFiltered = _products
-        _productsOriginal = _products
+        productsOriginal = _products
     }
 
     override fun getGroup(p0: Int): Any {
-        return this._productsFiltered[p0].orderName
+        return this.productsOriginal[p0].orderName
     }
 
     override fun getGroupView(p0: Int, p1: Boolean, p2: View?, p3: ViewGroup?): View {
         var convertView = p2
-        val product = _productsFiltered[p0]
+        val product = productsOriginal[p0]
 
         if (convertView == null) {
             val inflater = this._context
@@ -56,7 +53,7 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
         convertView.tvItemTitle.text = product.marketName
         convertView.tvItemName.text = product.orderName
         convertView.tvItemState.text = product.productState
-        convertView.tvItemPrice.text = product.productPrice.toString()
+        convertView.tvItemPrice.text = StringBuilder("${product.productPrice.toInt()}TL")
 
         return convertView
     }
@@ -66,7 +63,7 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
     }
 
     override fun getChild(p0: Int, p1: Int): Any {
-        return _productsFiltered[p0]
+        return productsOriginal[p0]
     }
 
     override fun isChildSelectable(p0: Int, p1: Int): Boolean {
@@ -87,7 +84,7 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
 
     override fun getChildView(p0: Int, p1: Int, p2: Boolean, p3: View?, p4: ViewGroup?): View {
         var convertView = p3
-        val details = _productsFiltered[p0].productDetail
+        val details = productsOriginal[p0].productDetail
 
         if (convertView == null) {
             val inflater = this._context
@@ -96,12 +93,12 @@ class ELVOrdersAdapter(val _context: Context, var _products: ArrayList<Product>)
         }
 
         convertView!!.tvItemName.text = details.orderDetail
-        convertView.tvItemPrice.text = details.summaryPrice.toString()
+        convertView.tvItemPrice.text = StringBuilder("${details.summaryPrice.toInt()}TL")
 
         return convertView
     }
 
     override fun getGroupCount(): Int {
-        return this._productsFiltered.size
+        return this.productsOriginal.size
     }
 }

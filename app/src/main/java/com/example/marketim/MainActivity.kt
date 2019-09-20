@@ -69,6 +69,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun goOrdersActivity() {
         val intent = Intent(applicationContext, OrdersActivity::class.java)
+        finish()
         startActivity(intent)
     }
 

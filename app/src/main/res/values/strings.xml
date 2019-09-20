@@ -5,6 +5,7 @@
     <string name="remember_me">Beni Hatırla</string>
     <string name="login">Giriş Yap</string>
     <string name="logout">Çıkış Yap</string>
+    <string name="my_orders">Siparişlerim</string>
     <string name="login_error">Kullanıcı adı veya şifre hatalı</string>
 
     <!-- Error Messages -->

@@ -1,25 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:weightSum="4"
-    android:layout_margin="10dp">
+    android:padding="10dp"
+    android:background="@color/colorGrey">
 
     <TextView
         android:id="@+id/tvItemName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="3"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tvItemPrice"
+        app:layout_constraintTop_toTopOf="@id/tvItemPrice"
         android:text="Sıvı Sabun 250ml"
-        android:textSize="18sp"
         />
 
     <TextView
         android:id="@+id/tvItemPrice"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        app:layout_constraintTop_toTopOf="@id/tvItemName"
+        app:layout_constraintEnd_toEndOf="parent"
         android:text="25TL"
-        android:textSize="18sp"
-        android:textAlignment="textEnd"/>
-</LinearLayout>
+        android:textAlignment="textEnd"
+        android:textStyle="bold"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
